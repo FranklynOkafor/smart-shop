@@ -22,6 +22,14 @@ function smartshop_enqueue_assets(): void {
 		SMARTSHOP_VERSION
 	);
 
+	// Header style
+	wp_enqueue_style(
+		'smartshop-header',
+		SMARTSHOP_ASSETS . '/css/header.css',
+		[],
+		SMARTSHOP_VERSION
+	);
+
 	// WooCommerce additions (loaded only when WooCommerce is active).
 	if ( smartshop_is_woocommerce_active() ) {
 		wp_enqueue_style(
