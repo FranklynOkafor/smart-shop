@@ -1,11 +1,10 @@
 <?php
 
 /**
- * The main template file.
+ * Index — Universal Fallback Template
  *
- * This is WordPress's ultimate fallback — used when no more-specific
- * template is found. For SmartShop, specific templates (front-page.php,
- * archive.php, single.php, etc.) should handle their own contexts.
+ * WordPress uses this when no more specific template exists.
+ * For an ecommerce store this is typically the blog index.
  *
  * @package SmartShop
  */
@@ -13,48 +12,43 @@
 get_header();
 ?>
 
-<main id="main" class="site-main" role="main">
-  <?php
-  /**
-   * Hook: smartshop_before_content
-   *
-   * @hooked smartshop_page_header - 10
-   */
-  do_action('smartshop_before_content');
-  ?>
+<main id="smartshop-main" class="smartshop-main" role="main">
 
-  <div class="<?php echo esc_attr(smartshop_container_class()); ?>">
+  <div class="smartshop-archive container">
 
     <?php if (have_posts()) : ?>
 
-      <div class="posts-grid">
+      <header class="smartshop-archive__header">
+        <?php
+        if (is_home() && ! is_front_page()) {
+          // Static blog page title
+          single_post_title('<h1 class="smartshop-archive__title">', '</h1>');
+        } else {
+          the_archive_title('<h1 class="smartshop-archive__title">', '</h1>');
+          the_archive_description('<div class="smartshop-archive__desc">', '</div>');
+        }
+        ?>
+      </header>
+
+      <div class="smartshop-post-grid">
         <?php
         while (have_posts()) :
           the_post();
-          // Loads content-post.php for posts, or falls back to content-post.php
-          $slug = get_post_type() === 'post' ? 'post' : 'post';
-          get_template_part('template-parts/content/content', $slug);
+          get_template_part('template-parts/global/post-card', get_post_type());
         endwhile;
         ?>
       </div>
 
-      <?php smartshop_pagination(); ?>
+      <?php get_template_part('template-parts/global/pagination'); ?>
 
     <?php else : ?>
 
-      <?php get_template_part('template-parts/content/content', 'none'); ?>
+      <?php get_template_part('template-parts/global/no-results'); ?>
 
     <?php endif; ?>
 
-  </div><!-- .container -->
+  </div><!-- .smartshop-archive -->
 
-  <?php
-  /**
-   * Hook: smartshop_after_content
-   */
-  do_action('smartshop_after_content');
-  ?>
-</main><!-- #main -->
+</main><!-- #smartshop-main -->
 
-<?php
-get_footer();
+<?php get_footer(); ?>

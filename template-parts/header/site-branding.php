@@ -9,7 +9,7 @@
 defined('ABSPATH') || exit;
 ?>
 <div class="site-branding">
-	<a href="<?php echo site_url(); ?>">
+	<a href="<?php echo esc_url(site_url()); ?>">
 		<?php smartshop_site_logo(); ?>
 	</a>
 

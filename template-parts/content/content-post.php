@@ -31,9 +31,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php the_excerpt(); ?>
 		</div>
 
-		<a class="btn btn--outline" href="<?php the_permalink(); ?>">
-			<?php esc_html_e( 'Read more', 'smartshop' ); ?>
-		</a>
+		
 	</div>
 
 </article>

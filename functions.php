@@ -19,7 +19,7 @@ define( 'SMARTSHOP_VERSION',   '1.0.0' );
 define( 'SMARTSHOP_DIR',       get_template_directory() );
 define( 'SMARTSHOP_URI',       get_template_directory_uri() );
 define( 'SMARTSHOP_ASSETS',    SMARTSHOP_URI . '/assets' );
-define( 'SMARTSHOP_MIN_PHP',   '8.0' );
+define( 'SMARTSHOP_MIN_PHP',   '7.4' );
 define( 'SMARTSHOP_MIN_WP',    '6.4' );
 
 
@@ -46,10 +46,19 @@ if ( version_compare( PHP_VERSION, SMARTSHOP_MIN_PHP, '<' ) ) {
 
 $smartshop_modules = [
 	'/inc/setup.php',
+	'/inc/helpers.php',
+	'/inc/template-functions.php',
+	'/inc/template-tags.php',
 	'/inc/enqueue.php',
 	'/inc/woocommerce.php',
 	'/inc/hooks.php',
-	'/inc/template-functions.php',
+	'/inc/widgets.php',
+	'/inc/sidebar.php',
+	'/inc/customizer.php',
+	'/inc/customizer-css.php',
+	'/inc/security.php',
+	'/inc/performance.php',
+	'/inc/ajax.php',
 ];
 
 foreach ( $smartshop_modules as $module ) {

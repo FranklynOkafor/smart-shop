@@ -1,11 +1,7 @@
 <?php
 
 /**
- * The main template file.
- *
- * This is WordPress's ultimate fallback — used when no more-specific
- * template is found. For SmartShop, specific templates (front-page.php,
- * archive.php, single.php, etc.) should handle their own contexts.
+ * Single Post Template
  *
  * @package SmartShop
  */
@@ -14,47 +10,49 @@ get_header();
 ?>
 
 <main id="main" class="site-main" role="main">
-  <?php
-  /**
-   * Hook: smartshop_before_content
-   *
-   * @hooked smartshop_page_header - 10
-   */
-  do_action('smartshop_before_content');
-  ?>
 
-  <div class="<?php echo esc_attr(smartshop_container_class()); ?>">
+  <?php do_action('smartshop_before_content'); ?>
 
-    <?php if (have_posts()) : ?>
+  <div class="container container--single">
+    <div class="single-layout single-layout--sidebar-left">
 
-      <div class="posts-grid">
+      <!-- ── LEFT SIDEBAR ── -->
+      <?php if (is_active_sidebar('sidebar-blog')) : ?>
+        <aside class="single-sidebar" role="complementary" aria-label="<?php esc_attr_e('Blog sidebar', 'smartshop'); ?>">
+          <?php dynamic_sidebar('sidebar-blog'); ?>
+        </aside>
+      <?php endif; ?>
+
+      <!-- ── MAIN CONTENT ── -->
+      <div class="single-content">
         <?php
         while (have_posts()) :
           the_post();
-          // Loads content-post.php for posts, or falls back to content-post.php
-          $slug = get_post_type() === 'post' ? 'post' : 'post';
-          get_template_part('template-parts/content/content', $slug);
+          get_template_part('template-parts/content/content', 'single');
         endwhile;
         ?>
-      </div>
+        
+        <!-- Previous / Next post navigation -->
+        <?php
+        the_post_navigation([
+          'prev_text' => '&larr; <span class="nav-subtitle">%title</span>',
+          'next_text' => '<span class="nav-subtitle">%title</span> &rarr;',
+          'class'     => 'post-navigation',
+        ]);
+        ?>
 
-      <?php smartshop_pagination(); ?>
+        <!-- Comments -->
+        <?php if (comments_open() || get_comments_number()) : ?>
+          <?php comments_template(); ?>
+        <?php endif; ?>
 
-    <?php else : ?>
+      </div><!-- .single-content -->
 
-      <?php get_template_part('template-parts/content/content', 'none'); ?>
-
-    <?php endif; ?>
-
+    </div><!-- .single-layout -->
   </div><!-- .container -->
 
-  <?php
-  /**
-   * Hook: smartshop_after_content
-   */
-  do_action('smartshop_after_content');
-  ?>
+  <?php do_action('smartshop_after_content'); ?>
+
 </main><!-- #main -->
 
-<?php
-get_footer();
+<?php get_footer(); ?>

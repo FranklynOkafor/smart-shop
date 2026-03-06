@@ -122,6 +122,11 @@ function smartshop_widgets_init(): void
       'id'            => 'footer-3',
       'description'   => esc_html__('Third footer widget column.', 'smartshop'),
     ],
+    [
+      'name'          => esc_html__('Blog Sidebar', 'smartshop'),
+      'id'            => 'sidebar-blog',
+      'description'   => esc_html__('Widgets in this area appear on single posts and the blog archive.', 'smartshop'),
+    ],
   ];
 
   $defaults = [
