@@ -7,6 +7,7 @@
  * @package SmartShop
  */
 
+
 ( function () {
 	'use strict';
 

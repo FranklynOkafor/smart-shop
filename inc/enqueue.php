@@ -30,6 +30,14 @@ function smartshop_enqueue_assets(): void {
 		SMARTSHOP_VERSION
 	);
 
+	// Footer style
+	wp_enqueue_style(
+		'smartshop-footer',
+		SMARTSHOP_ASSETS . '/css/footer.css',
+		[],
+		SMARTSHOP_VERSION
+	);
+
 	// WooCommerce additions (loaded only when WooCommerce is active).
 	if ( smartshop_is_woocommerce_active() ) {
 		wp_enqueue_style(
@@ -42,6 +50,16 @@ function smartshop_enqueue_assets(): void {
 
 	// ── Scripts ───────────────────────────────────────────────────────────────
 
+	// MAIN SCRIPT (tiny, no jQuery dependency).
+	wp_enqueue_script(
+		'smartshop-script',
+		SMARTSHOP_ASSETS . '/js/main.js',
+		[],
+		SMARTSHOP_VERSION,
+		true // load in footer
+	);
+
+
 	// Navigation toggle (tiny, no jQuery dependency).
 	wp_enqueue_script(
 		'smartshop-navigation',
@@ -50,6 +68,9 @@ function smartshop_enqueue_assets(): void {
 		SMARTSHOP_VERSION,
 		true // load in footer
 	);
+
+
+	
 
 	// Localised data for JS.
 	wp_localize_script(
