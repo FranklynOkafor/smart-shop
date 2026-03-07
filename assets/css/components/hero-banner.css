@@ -1,0 +1,267 @@
+/* =============================================================================
+   HERO BANNER SLIDESHOW
+   File: assets/css/components/hero-banner.css
+   ============================================================================= */
+
+/* ── Container ── */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--wp--preset--color--neutral-900);
+  /* Pause auto-advance when user hovers */
+}
+
+.hero-banner:hover {
+  --hero-paused: paused;
+}
+
+/* ── Track (holds all slides in a row) ── */
+.hero-banner__track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Individual slide ── */
+.hero-banner__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.7s ease,
+    visibility 0.7s ease;
+  will-change: opacity;
+}
+
+.hero-banner__slide--active {
+  opacity: 1;
+  visibility: visible;
+  position: relative; /* active slide takes up space */
+}
+
+/* ── Background image ── */
+.hero-banner__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ── Dark overlay so text is readable ── */
+.hero-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 20, 10, 0.35) 0%,
+    rgba(30, 20, 10, 0.65) 100%
+  );
+}
+
+/* ── Slide content ── */
+.hero-banner__content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  padding-top: var(--wp--preset--spacing--24);
+  padding-bottom: var(--wp--preset--spacing--24);
+}
+
+.hero-banner__heading {
+  font-family: var(--wp--preset--font-family--display);
+  font-size: var(--wp--preset--font-size--6xl);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--wp--preset--color--base-white);
+  margin: 0 0 var(--wp--preset--spacing--5);
+
+  /* Slide-in animation for active slide */
+  transform: translateY(0);
+  transition: transform 0.7s ease 0.1s;
+}
+
+.hero-banner__slide:not(.hero-banner__slide--active) .hero-banner__heading {
+  transform: translateY(20px);
+}
+
+.hero-banner__subtext {
+  font-size: var(--wp--preset--font-size--lg);
+  line-height: 1.7;
+  color: var(--wp--preset--color--surface-2);
+  margin: 0 0 var(--wp--preset--spacing--8);
+  max-width: 560px;
+
+  transform: translateY(0);
+  transition: transform 0.7s ease 0.2s;
+}
+
+.hero-banner__slide:not(.hero-banner__slide--active) .hero-banner__subtext {
+  transform: translateY(20px);
+}
+
+/* ── CTA buttons ── */
+.hero-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--wp--preset--spacing--4);
+
+  transform: translateY(0);
+  transition: transform 0.7s ease 0.3s;
+}
+
+.hero-banner__slide:not(.hero-banner__slide--active) .hero-banner__actions {
+  transform: translateY(20px);
+}
+
+/* ── Prev / Next buttons ── */
+.hero-banner__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--wp--custom--border--radius--full);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--wp--preset--color--base-white);
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition:
+    background var(--wp--custom--transition--fast),
+    border-color var(--wp--custom--transition--fast);
+}
+
+.hero-banner__btn:hover,
+.hero-banner__btn:focus-visible {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.8);
+  outline: none;
+}
+
+.hero-banner__btn:focus-visible {
+  outline: 3px solid var(--wp--preset--color--primary);
+  outline-offset: 2px;
+}
+
+.hero-banner__btn--prev {
+  left: var(--wp--preset--spacing--6);
+}
+
+.hero-banner__btn--next {
+  right: var(--wp--preset--spacing--6);
+}
+
+.hero-banner__btn .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Dot indicators ── */
+.hero-banner__dots {
+  position: absolute;
+  bottom: var(--wp--preset--spacing--8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: var(--wp--preset--spacing--3);
+}
+
+.hero-banner__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--wp--custom--border--radius--full);
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background var(--wp--custom--transition--fast),
+    width var(--wp--custom--transition--fast),
+    transform var(--wp--custom--transition--fast);
+}
+
+.hero-banner__dot--active,
+.hero-banner__dot:hover {
+  background: var(--wp--preset--color--base-white);
+  width: 24px;
+}
+
+.hero-banner__dot:focus-visible {
+  outline: 3px solid var(--wp--preset--color--primary);
+  outline-offset: 2px;
+}
+
+/* ── Reduced motion — disable transitions for users who prefer it ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner__slide,
+  .hero-banner__heading,
+  .hero-banner__subtext,
+  .hero-banner__actions,
+  .hero-banner__btn,
+  .hero-banner__dot {
+    transition: none;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero-banner__slide {
+    min-height: 75vh;
+  }
+
+  .hero-banner__heading {
+    font-size: var(--wp--preset--font-size--4xl);
+  }
+
+  .hero-banner__subtext {
+    font-size: var(--wp--preset--font-size--md);
+  }
+
+  .hero-banner__btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-banner__btn--prev {
+    left: var(--wp--preset--spacing--3);
+  }
+
+  .hero-banner__btn--next {
+    right: var(--wp--preset--spacing--3);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-banner__slide {
+    min-height: 85vh;
+  }
+
+  .hero-banner__actions {
+    flex-direction: column;
+  }
+
+  .hero-banner__actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Hide prev/next on very small screens — dots are enough */
+  .hero-banner__btn {
+    display: none;
+  }
+}

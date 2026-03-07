@@ -59,6 +59,14 @@ function smartshop_enqueue_assets(): void {
 		true // load in footer
 	);
 
+	// Hero slideshow script 
+	wp_enqueue_script(
+    'smartshop-hero-slideshow',
+    SMARTSHOP_ASSETS . '/js/components/hero-slideshow.js',
+    [],
+    SMARTSHOP_VERSION,
+    true
+);
 
 	// Navigation toggle (tiny, no jQuery dependency).
 	wp_enqueue_script(

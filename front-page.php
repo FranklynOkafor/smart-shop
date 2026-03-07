@@ -19,7 +19,7 @@ get_header();
 	<!-- ═══════════════════════════════════
 	     HERO BANNER
 	═══════════════════════════════════ -->
-	<?php get_template_part('template-parts/woocommerce/parts/hero-banner'); ?>
+	<?php get_template_part('woocommerce/parts/hero-banner'); ?>
 
 	<?php do_action('smartshop_after_hero'); ?>
 
@@ -28,7 +28,7 @@ get_header();
 	═══════════════════════════════════ -->
 	<section class="smartshop-trust" aria-label="<?php esc_attr_e('Why shop with us', 'smartshop'); ?>">
 		<div class="container">
-			<?php get_template_part('template-parts/woocommerce/parts/trust-badges'); ?>
+			<?php get_template_part('woocommerce/parts/trust-badges'); ?>
 		</div>
 	</section>
 
@@ -120,7 +120,7 @@ get_header();
 							wc_setup_product_data($product);
 						?>
 							<li class="smartshop-product-grid__item">
-								<?php get_template_part('template-parts/woocommerce/parts/product-card'); ?>
+								<?php get_template_part('woocommerce/parts/product-card'); ?>
 							</li>
 						<?php endforeach;
 						wp_reset_postdata(); ?>
@@ -165,7 +165,7 @@ get_header();
 							$GLOBALS['product'] = $product;
 						?>
 							<li class="smartshop-product-grid__item">
-								<?php get_template_part('template-parts/woocommerce/product-card'); ?>
+								<?php get_template_part('woocommerce/product-card'); ?>
 							</li>
 						<?php endforeach;
 						wp_reset_postdata(); ?>
@@ -182,14 +182,14 @@ get_header();
 	<!-- ═══════════════════════════════════
 	     PROMO SPLIT BANNER
 	═══════════════════════════════════ -->
-	<?php get_template_part('template-parts/woocommerce/parts/promo-split'); ?>
+	<?php get_template_part('woocommerce/parts/promo-split'); ?>
 
 	<?php do_action('smartshop_after_promo_banner'); ?>
 
 	<!-- ═══════════════════════════════════
 	     TESTIMONIALS
 	═══════════════════════════════════ -->
-	<?php get_template_part('template-parts/woocommerce/parts/testimonials'); ?>
+	<?php get_template_part('woocommerce/parts/testimonials'); ?>
 
 	<?php do_action('smartshop_after_testimonials'); ?>
 
@@ -200,7 +200,7 @@ get_header();
 		<div class="container container--narrow">
 			<h2 class="smartshop-newsletter-section__title"><?php esc_html_e('Get Early Access to New Drops', 'smartshop'); ?></h2>
 			<p class="smartshop-newsletter-section__desc"><?php esc_html_e('Join 12,000+ subscribers. No spam, unsubscribe anytime.', 'smartshop'); ?></p>
-			<?php get_template_part('template-parts/footer/parts/newsletter-form'); ?>
+			<?php get_template_part('template-parts/footer/parts/newsletter-signup'); ?>
 		</div>
 	</section>
 

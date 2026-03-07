@@ -8,6 +8,8 @@
  * @package SmartShop
  */
 
+ @import 'components/hero-banner.css';
+
 /* ============================================================
    1. CUSTOM PROPERTIES (design tokens)
    ============================================================ */
