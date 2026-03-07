@@ -95,7 +95,7 @@ if (empty($slides)) {
               <?php if (! empty($slide['outline_label']) && ! empty($slide['outline_url'])) : ?>
                 <a
                   href="<?php echo esc_url($slide['outline_url']); ?>"
-                  class="btn btn--outline">
+                  class="btn btn--outline-white">
                   <?php echo esc_html($slide['outline_label']); ?>
                 </a>
               <?php endif; ?>

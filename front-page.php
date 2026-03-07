@@ -113,14 +113,17 @@ get_header();
 				));
 
 				if ($new_products) :
+					
+					
 				?>
 					<ul class="smartshop-product-grid smartshop-product-grid--4col">
 						<?php foreach ($new_products as $product) :
 							$GLOBALS['product'] = $product;
 							wc_setup_product_data($product);
+							
 						?>
 							<li class="smartshop-product-grid__item">
-								<?php get_template_part('woocommerce/parts/product-card'); ?>
+								<?php get_template_part('template-parts/products/product-card'); ?>
 							</li>
 						<?php endforeach;
 						wp_reset_postdata(); ?>
@@ -163,6 +166,7 @@ get_header();
 					<ul class="smartshop-product-grid smartshop-product-grid--4col">
 						<?php foreach ($bestsellers as $product) :
 							$GLOBALS['product'] = $product;
+							wc_setup_product_data($product);
 						?>
 							<li class="smartshop-product-grid__item">
 								<?php get_template_part('woocommerce/product-card'); ?>

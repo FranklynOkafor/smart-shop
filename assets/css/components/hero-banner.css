@@ -33,9 +33,7 @@
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity 0.7s ease,
-    visibility 0.7s ease;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
   will-change: opacity;
 }
 
@@ -66,24 +64,28 @@
 }
 
 /* ── Slide content ── */
+
+.hero-banner__content .container{
+  margin-left: 100px;
+}
+
 .hero-banner__content {
   position: relative;
   z-index: 2;
   max-width: 680px;
   padding-top: var(--wp--preset--spacing--24);
   padding-bottom: var(--wp--preset--spacing--24);
+  
 }
 
-.hero-banner__heading {
+.hero-banner .hero-banner__heading {
   font-family: var(--wp--preset--font-family--display);
-  font-size: var(--wp--preset--font-size--6xl);
+  font-size: var(--wp--preset--font-size--6-xl);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--wp--preset--color--base-white);
   margin: 0 0 var(--wp--preset--spacing--5);
-
-  /* Slide-in animation for active slide */
   transform: translateY(0);
   transition: transform 0.7s ease 0.1s;
 }
@@ -139,8 +141,7 @@
   cursor: pointer;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  transition:
-    background var(--wp--custom--transition--fast),
+  transition: background var(--wp--custom--transition--fast),
     border-color var(--wp--custom--transition--fast);
 }
 
@@ -189,8 +190,7 @@
   background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   padding: 0;
-  transition:
-    background var(--wp--custom--transition--fast),
+  transition: background var(--wp--custom--transition--fast),
     width var(--wp--custom--transition--fast),
     transform var(--wp--custom--transition--fast);
 }
@@ -224,8 +224,11 @@
     min-height: 75vh;
   }
 
-  .hero-banner__heading {
-    font-size: var(--wp--preset--font-size--4xl);
+  .hero-banner__content .container{
+    margin-left: 0;
+  }
+  .hero-banner .hero-banner__heading {
+    font-size: var(--wp--preset--font-size--4-xl);
   }
 
   .hero-banner__subtext {
@@ -247,6 +250,9 @@
 }
 
 @media (max-width: 480px) {
+  .hero-banner__content .container{
+    margin-left: 0;
+  }
   .hero-banner__slide {
     min-height: 85vh;
   }
