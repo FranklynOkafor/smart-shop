@@ -205,9 +205,8 @@ get_header();
 	═══════════════════════════════════ -->
 	<section class="smartshop-newsletter-section" aria-label="<?php esc_attr_e('Newsletter signup', 'smartshop'); ?>">
 		<div class="container container--narrow">
-			<h2 class="smartshop-newsletter-section__title"><?php esc_html_e('Get Early Access to New Drops', 'smartshop'); ?></h2>
-			<p class="smartshop-newsletter-section__desc"><?php esc_html_e('Join 12,000+ subscribers. No spam, unsubscribe anytime.', 'smartshop'); ?></p>
-			<?php get_template_part('template-parts/footer/parts/newsletter-signup'); ?>
+			
+			<?php get_template_part('template-parts/footer/newsletter-signup'); ?>
 		</div>
 	</section>
 

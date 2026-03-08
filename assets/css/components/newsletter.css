@@ -1,0 +1,213 @@
+/* =============================================================================
+   NEWSLETTER
+   File: assets/css/components/newsletter.css
+   ============================================================================= */
+
+/* ── Section wrapper (set in front-page.php) ── */
+.smartshop-newsletter-section {
+  padding-block: var(--space-16);
+  background: var(--wp--preset--gradient--earthy-warm);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle decorative circle — purely visual */
+.smartshop-newsletter-section::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  top: -200px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.smartshop-newsletter-section::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  bottom: -150px;
+  left: -80px;
+  pointer-events: none;
+}
+
+/* ── Inner layout ── */
+.newsletter__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-16);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Content side ── */
+.newsletter__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.newsletter__content .smartshop-eyebrow {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.newsletter__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.newsletter__desc {
+  font-size: var(--text-md);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* ── Form side ── */
+.newsletter__form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ── Field group: input + button inline ── */
+.newsletter__field-group {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  background-color: var(--color-white);
+  border-radius: var(--radius-base);
+  padding: var(--space-2);
+  box-shadow: var(--shadow-lg);
+}
+
+.newsletter__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  outline: none;
+  min-width: 0; /* prevent overflow */
+}
+
+.newsletter__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.newsletter__input:focus {
+  outline: none;
+}
+
+/* Focus ring on the whole group when input is focused */
+.newsletter__field-group:focus-within {
+  outline: 3px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.newsletter__submit {
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Error message ── */
+.newsletter__error {
+  font-size: var(--text-sm);
+  color: var(--color-error-subtle);
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  background-color: rgba(198, 40, 40, 0.2);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-error-subtle);
+}
+
+.newsletter__error[hidden] {
+  display: none;
+}
+
+/* ── Success message ── */
+.newsletter__success {
+  font-size: var(--text-sm);
+  color: var(--color-white);
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  background-color: rgba(46, 125, 50, 0.3);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-success);
+}
+
+.newsletter__success[hidden] {
+  display: none;
+}
+
+/* ── Disclaimer ── */
+.newsletter__disclaimer {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Responsive ── */
+@media ( max-width: 1024px ) {
+  .newsletter__inner {
+    gap: var(--space-10);
+  }
+
+  .newsletter__heading {
+    font-size: var(--text-2xl);
+  }
+}
+
+@media ( max-width: 768px ) {
+  .smartshop-newsletter-section {
+    padding-block: var(--space-12);
+  }
+
+  .newsletter__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    text-align: center;
+  }
+
+  .newsletter__content {
+    align-items: center;
+  }
+
+  .newsletter__heading {
+    font-size: var(--text-2xl);
+  }
+}
+
+@media ( max-width: 480px ) {
+  .newsletter__field-group {
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+
+  .newsletter__submit {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Reduced motion ── */
+@media ( prefers-reduced-motion: reduce ) {
+  .newsletter__submit {
+    transition: none;
+  }
+}
