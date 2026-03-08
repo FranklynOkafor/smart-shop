@@ -113,14 +113,13 @@ get_header();
 				));
 
 				if ($new_products) :
-					
-					
+					// var_dump( ( $new_products ) );
+
 				?>
 					<ul class="smartshop-product-grid smartshop-product-grid--4col">
 						<?php foreach ($new_products as $product) :
-							$GLOBALS['product'] = $product;
-							wc_setup_product_data($product);
-							
+							set_query_var('smartshop_product', $product);
+
 						?>
 							<li class="smartshop-product-grid__item">
 								<?php get_template_part('template-parts/products/product-card'); ?>
@@ -156,20 +155,24 @@ get_header();
 				<?php
 				$bestsellers = wc_get_products(array(
 					'limit'   => 4,
-					'orderby' => 'popularity',
-					'order'   => 'DESC',
-					'status'  => 'publish',
+					// 'orderby' => 'popularity',
+					// 'order'   => 'DESC',
+					'status'     => 'publish', // Only published products
+					'orderby'    => 'meta_value_num', // Order by numeric meta value
+					'meta_key'   => 'total_sales',    // The meta key that stores total sales
+					'order'      => 'DESC',     // Sort in descending order (most sales first)
+					// 'return'     => 'objects',
 				));
 
 				if ($bestsellers) :
 				?>
 					<ul class="smartshop-product-grid smartshop-product-grid--4col">
 						<?php foreach ($bestsellers as $product) :
-							$GLOBALS['product'] = $product;
-							wc_setup_product_data($product);
+							set_query_var('smartshop_product', $product);
+
 						?>
 							<li class="smartshop-product-grid__item">
-								<?php get_template_part('woocommerce/product-card'); ?>
+								<?php get_template_part('template-parts/products/product-card'); ?>
 							</li>
 						<?php endforeach;
 						wp_reset_postdata(); ?>
@@ -193,7 +196,7 @@ get_header();
 	<!-- ═══════════════════════════════════
 	     TESTIMONIALS
 	═══════════════════════════════════ -->
-	<?php get_template_part('woocommerce/parts/testimonials'); ?>
+	<?php get_template_part('woocommerce/parts/testimonials');  ?>
 
 	<?php do_action('smartshop_after_testimonials'); ?>
 

@@ -1,0 +1,128 @@
+/* =============================================================================
+   PROMO SPLIT BANNER
+   File: assets/css/components/promo-split.css
+   ============================================================================= */
+
+/* ── Section ── */
+.promo-split {
+  padding-block: var(--space-16);
+  background-color: var(--color-surface);
+  overflow: hidden;
+}
+
+/* ── Two column inner ── */
+.promo-split__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  gap: var(--space-16);
+}
+
+/* ── Image side ── */
+.promo-split__media {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-surface-dark);
+}
+
+.promo-split__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.promo-split:hover .promo-split__img {
+  transform: scale( 1.03 );
+}
+
+/* ── Content side ── */
+.promo-split__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 520px;
+}
+
+.promo-split__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.promo-split__text {
+  font-size: var(--text-md);
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ── CTA buttons ── */
+.promo-split__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+/* ── Responsive ── */
+@media ( max-width: 1024px ) {
+  .promo-split__inner {
+    gap: var(--space-10);
+  }
+
+  .promo-split__heading {
+    font-size: var(--text-2xl);
+  }
+}
+
+@media ( max-width: 768px ) {
+  .promo-split {
+    padding-block: var(--space-10);
+  }
+
+  .promo-split__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .promo-split__media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .promo-split__content {
+    max-width: 100%;
+  }
+
+  .promo-split__heading {
+    font-size: var(--text-2xl);
+  }
+}
+
+@media ( max-width: 480px ) {
+  .promo-split__actions {
+    flex-direction: column;
+  }
+
+  .promo-split__actions .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* ── Reduced motion ── */
+@media ( prefers-reduced-motion: reduce ) {
+  .promo-split__img {
+    transition: none;
+  }
+}

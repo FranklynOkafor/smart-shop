@@ -8,12 +8,13 @@
  * @package SmartShop
  */
 
+
 defined( 'ABSPATH' ) || exit;
 
-global $product;
+$product = get_query_var( 'smartshop_product' );
 
 if ( ! $product instanceof WC_Product ) {
-	return;
+    return;
 }
 
 $product_id    = $product->get_id();
@@ -23,6 +24,7 @@ $is_on_sale    = $product->is_on_sale();
 $is_instock    = $product->is_in_stock();
 $rating_count  = $product->get_rating_count();
 $average       = $product->get_average_rating();
+
 
 
 // Image

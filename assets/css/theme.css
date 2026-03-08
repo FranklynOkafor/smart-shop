@@ -12,6 +12,8 @@
 @import 'base/buttons.css';
 @import 'components/trust-badges.css';
 @import 'components/categories.css';
+@import 'components/product-card.css';
+@import 'components/promo-split.css';
 
 /* ============================================================
    1. CUSTOM PROPERTIES (design tokens)
