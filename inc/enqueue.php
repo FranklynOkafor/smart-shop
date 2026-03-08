@@ -77,6 +77,14 @@ function smartshop_enqueue_assets(): void {
 		true // load in footer
 	);
 
+	// Testimonuial Script
+	wp_enqueue_script(
+    'smartshop-testimonials',
+    SMARTSHOP_ASSETS . '/js/components/testimonials.js',
+    [],
+    SMARTSHOP_VERSION,
+    true
+);
 
 	
 
