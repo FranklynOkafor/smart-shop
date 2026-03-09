@@ -16,7 +16,7 @@ $product = get_query_var( 'smartshop_product' );
 if ( ! $product instanceof WC_Product ) {
     return;
 }
-
+	
 $product_id    = $product->get_id();
 $product_link  = get_permalink( $product_id );
 $product_name  = $product->get_name();

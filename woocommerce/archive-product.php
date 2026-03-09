@@ -19,8 +19,8 @@ get_header();
  * Use this to inject banners, notices above the shop header.
  */
 do_action('smartshop_before_archive_product');
-?>
 
+?>
 <main id="smartshop-main" class="smartshop-main smartshop-archive-product" role="main">
 
   <!-- ── ARCHIVE HEADER: title, breadcrumb, sort ── -->
@@ -77,8 +77,8 @@ do_action('smartshop_before_archive_product');
           <div id="smartshop-filters" class="smartshop-sidebar__body">
 
             <!-- Active Filters -->
-            <?php if (is_active_sidebar('shop-filters')) : ?>
-              <?php dynamic_sidebar('shop-filters'); ?>
+            <?php if (is_active_sidebar('sidebar-shop')) : ?>
+              <?php dynamic_sidebar('sidebar-shop'); ?>
             <?php else : ?>
 
               <!-- Active filter chips -->
@@ -122,7 +122,7 @@ do_action('smartshop_before_archive_product');
                * Attribute filters — add one per attribute.
                * Replace 'pa_color', 'pa_size' with your actual attribute slugs.
                */
-              $filter_attributes = apply_filters('smartshop_filter_attributes', array('pa_color', 'pa_size'));
+              // $filter_attributes = apply_filters('smartshop_filter_attributes', array('pa_color', 'pa_size'));
 
               foreach ($filter_attributes as $attribute) :
                 $label = wc_attribute_label($attribute);
@@ -166,9 +166,19 @@ do_action('smartshop_before_archive_product');
 
             <?php woocommerce_product_loop_start(); ?>
 
-            <?php while (have_posts()) : the_post(); ?>
-              <?php wc_get_template_part('content', 'product'); ?>
-            <?php endwhile; ?>
+            <?php while (have_posts()) : the_post();
+              global $product;
+              $product = wc_get_product(get_the_ID());
+              if ($product) :
+                set_query_var('smartshop_product', $product);
+            ?>
+                <li <?php wc_product_class('', $product); ?>>
+                  <?php get_template_part('template-parts/products/product-card'); ?>
+                </li>
+            <?php
+              endif;
+            endwhile;
+            ?>
 
             <?php woocommerce_product_loop_end(); ?>
 

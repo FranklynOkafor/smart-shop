@@ -16,6 +16,8 @@
 @import 'components/promo-split.css';
 @import 'components/testimonials.css';
 @import 'components/newsletter.css';
+@import 'archive-product.css';
+@import 'components/sidebar.css';
 
 /* ============================================================
    1. CUSTOM PROPERTIES (design tokens)
@@ -88,7 +90,7 @@
   --font-mono: var(--wp--preset--font-family--mono); /* JetBrains Mono */
   --font-system: var(--wp--preset--font-family--system);
 
-  --text-xs: var(--wp--preset--font-size--2-xl) /* 0.75rem  */
+  --text-xs: var(--wp--preset--font-size--2-xl); /* 0.75rem  */
   --text-sm: var(--wp--preset--font-size--sm); /* 0.875rem */
   --text-base: var(--wp--preset--font-size--md); /* 1rem     */
   --text-md: var(--wp--preset--font-size--lg); /* 1.125rem */
