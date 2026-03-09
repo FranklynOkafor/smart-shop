@@ -22,6 +22,8 @@ do_action( 'smartshop_before_single_product' );
 	<?php while ( have_posts() ) : the_post(); ?>
 
 		<?php
+    global $product;
+    $product = wc_get_product( get_the_ID() );
 		/**
 		 * Hook: woocommerce_before_single_product
 		 * @hooked woocommerce_output_all_notices - 10

@@ -73,8 +73,8 @@ remove_action( 'woocommerce_after_shop_loop_item',  'woocommerce_template_loop_p
 /**
  * Move product meta below the add-to-cart button.
  */
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_product_meta', 40 );
-add_action( 'woocommerce_single_product_summary', 'woocommerce_product_meta', 55 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 55 );
 
 // ─── Cart / Checkout ──────────────────────────────────────────────────────────
 
@@ -99,3 +99,15 @@ add_filter(
 		return $defaults;
 	}
 );
+
+
+
+/**
+ * Use SmartShop product card for related products and upsells.
+ */
+add_action( 'woocommerce_before_shop_loop_item', function() {
+	global $product;
+	if ( $product ) {
+			set_query_var( 'smartshop_product', $product );
+	}
+}, 1 );

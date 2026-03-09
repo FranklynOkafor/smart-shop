@@ -1,0 +1,111 @@
+/* ── Related products & upsells grid ── */
+.smartshop-related ul.products,
+.smartshop-upsells ul.products {
+  display: grid;
+  grid-template-columns: repeat( 4, 1fr );
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.smartshop-related ul.products li.product,
+.smartshop-upsells ul.products li.product {
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  width: 100% !important;
+  clear: none !important;
+}
+
+.smartshop-related ul.products li.product img,
+.smartshop-upsells ul.products li.product img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+  display: block !important;
+}
+
+.smartshop-related ul.products,
+.smartshop-upsells ul.products {
+  clear: none !important;
+}
+
+.smartshop-related ul.products::before,
+.smartshop-related ul.products::after,
+.smartshop-upsells ul.products::before,
+.smartshop-upsells ul.products::after {
+  display: none !important;
+}
+
+.smartshop-related ul.products li.product .product-card__media,
+.smartshop-upsells ul.products li.product .product-card__media {
+  width: 100%;
+  height: 100%;
+}
+
+.smartshop-related ul.products li.product .product-card__media img,
+.smartshop-upsells ul.products li.product .product-card__media img {
+  /* height: 100% !important; */
+  width: 100% !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+  display: block !important;
+}
+
+.smartshop-related ul.products li.product .product-card__media,
+.smartshop-upsells ul.products li.product .product-card__media {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.smartshop-related ul.products li.product .product-card__media img,
+.smartshop-upsells ul.products li.product .product-card__media img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  /* height: 100% !important; */
+  object-fit: cover !important;
+  margin: 0 !important;
+}
+
+/* Responsive */
+@media ( max-width: 1024px ) {
+  .smartshop-related ul.products,
+  .smartshop-upsells ul.products {
+    grid-template-columns: repeat( 3, 1fr );
+  }
+}
+
+@media ( max-width: 768px ) {
+  .smartshop-related ul.products,
+  .smartshop-upsells ul.products {
+    grid-template-columns: repeat( 2, 1fr );
+  }
+}
+
+
+
+/* Override WooCommerce primary colour with theme colour */
+:root {
+  --wc-primary: var(--color-primary);
+  --wc-primary-text: var(--color-white);
+}
+
+/* Belt and braces — target the button directly */
+.single_add_to_cart_button,
+button.single_add_to_cart_button,
+input.single_add_to_cart_button {
+  background-color: var(--color-primary) !important;
+  color: var(--color-white) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.single_add_to_cart_button:hover,
+button.single_add_to_cart_button:hover {
+  background-color: var(--color-primary-dark) !important;
+  border-color: var(--color-primary-dark) !important;
+}
