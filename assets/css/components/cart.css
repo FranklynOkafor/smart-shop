@@ -37,7 +37,6 @@
 
 .woocommerce-cart .woocommerce .cart_totals {
   width: 100%;
-  
 }
 
 /* ═══════════════════════════════════
@@ -518,7 +517,7 @@
 
   .woocommerce-cart table.shop_table tbody tr {
     display: grid;
-    grid-template-columns: 36px 72px 1fr;
+    /* grid-template-columns: 36px 72px 1fr; */
     grid-template-areas:
       "remove thumb name"
       "remove thumb price"
