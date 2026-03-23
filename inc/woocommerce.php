@@ -111,3 +111,35 @@ add_action( 'woocommerce_before_shop_loop_item', function() {
 			set_query_var( 'smartshop_product', $product );
 	}
 }, 1 );
+
+
+
+// Add trust badges to the cart
+
+add_action( 'woocommerce_review_order_after_submit', function() {
+  ?>
+  <div class="smartshop-checkout-trust">
+    <span class="smartshop-checkout-trust__item">
+      <?php smartshop_icon( 'shield' ); ?>
+      <?php esc_html_e( 'SSL Secure Payment', 'smartshop' ); ?>
+    </span>
+    <span class="smartshop-checkout-trust__item">
+      <?php smartshop_icon( 'lock' ); ?>
+      <?php esc_html_e( 'Your data is protected', 'smartshop' ); ?>
+    </span>
+    <span class="smartshop-checkout-trust__item">
+      <?php smartshop_icon( 'return' ); ?>
+      <?php esc_html_e( '30-day returns', 'smartshop' ); ?>
+    </span>
+  </div>
+  <?php
+} );
+
+
+
+
+
+
+
+
+
