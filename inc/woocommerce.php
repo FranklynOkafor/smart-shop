@@ -137,9 +137,20 @@ add_action( 'woocommerce_review_order_after_submit', function() {
 
 
 
+// ==============================
+// CTA BUTTON FOR THANK YOU PAGE
+// ==============================
 
 
-
-
-
-
+add_action( 'woocommerce_thankyou', function() {
+  ?>
+  <div class="smartshop-thankyou-actions">
+    <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn--primary">
+      <?php esc_html_e( 'Continue Shopping', 'smartshop' ); ?>
+    </a>
+    <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'orders' ) ); ?>" class="btn--outline">
+      <?php esc_html_e( 'View My Orders', 'smartshop' ); ?>
+    </a>
+  </div>
+  <?php
+}, 20 );
