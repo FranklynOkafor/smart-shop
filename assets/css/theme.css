@@ -24,6 +24,7 @@
 @import 'components/checkout.css';
 @import 'components/thankyou.css';
 @import 'components/minicart.css';
+@import 'components/myaccount.css';
 
 /* Addons */
 @import 'archive-product.css';
