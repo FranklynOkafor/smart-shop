@@ -91,12 +91,12 @@ function smartshop_enqueue_assets(): void
 	// Cart Floater Script
 
 	wp_enqueue_script(
-		'smartshop-cart-floater',
-		SMARTSHOP_ASSETS . '/js/components/cartFloater.js',
-		[],
-		SMARTSHOP_VERSION,
-		true
-	);
+    'smartshop-mini-cart',
+    SMARTSHOP_ASSETS . '/js/components/minicart.js',
+    [ 'jquery' ],
+    SMARTSHOP_VERSION,
+    true
+);
 
 
 

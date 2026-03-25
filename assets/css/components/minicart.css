@@ -1,0 +1,308 @@
+/* =============================================================================
+   MINI CART DROPDOWN
+   File: assets/css/components/mini-cart.css
+   ============================================================================= */
+
+/* ── Wrapper — position anchor ── */
+.mini-cart-wrap {
+  position: relative;
+}
+
+/* ── Dropdown panel ── */
+.mini-cart {
+  position: absolute;
+  top: calc( 100% + var(--space-3) );
+  right: 0;
+  z-index: var(--z-dropdown);
+  width: 360px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+
+  /* Hidden state */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY( -8px );
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
+  pointer-events: none;
+}
+
+/* Arrow pointer */
+.mini-cart::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 18px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  transform: rotate( 45deg );
+}
+
+/* ── Visible state ── */
+.mini-cart-wrap:hover .mini-cart,
+.mini-cart-wrap.is-open .mini-cart {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY( 0 );
+  pointer-events: auto;
+}
+
+.mini-cart-wrap:hover .js-cart-trigger,
+.mini-cart-wrap.is-open .js-cart-trigger {
+  color: var(--color-primary);
+}
+
+/* ── Inner scroll container ── */
+.mini-cart__inner {
+  display: flex;
+  flex-direction: column;
+  max-height: 480px;
+  padding: 0 15px;
+}
+
+/* ── Header ── */
+.mini-cart__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.mini-cart__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.mini-cart__count {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface-alt);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+/* ── Body — scrollable ── */
+.mini-cart__body {
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.mini-cart__body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mini-cart__body::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+/* ── WooCommerce mini cart items ── */
+.mini-cart__body .woocommerce-mini-cart {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mini-cart__body .woocommerce-mini-cart__item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+
+.mini-cart__body .woocommerce-mini-cart__item:last-child {
+  border-bottom: none;
+}
+
+.mini-cart__body .woocommerce-mini-cart__item:hover {
+  background-color: var(--color-surface-alt);
+}
+
+/* Product image */
+.mini-cart__body .woocommerce-mini-cart__item img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  display: block;
+}
+
+/* Product name + quantity */
+.mini-cart__body .woocommerce-mini-cart__item .mini-cart-item-info {
+  min-width: 0;
+}
+
+.mini-cart__body .woocommerce-mini-cart__item a:not(.remove) {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--transition-fast);
+}
+
+.mini-cart__body .woocommerce-mini-cart__item a:not(.remove):hover {
+  color: var(--color-primary);
+}
+
+.mini-cart__body .woocommerce-mini-cart__item .quantity {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  display: block;
+}
+
+/* Remove button */
+.mini-cart__body .woocommerce-mini-cart__item .remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.mini-cart__body .woocommerce-mini-cart__item .remove:hover {
+  background-color: var(--color-error-subtle);
+  color: var(--color-error);
+}
+
+/* ── Empty cart state ── */
+.mini-cart__body .woocommerce-mini-cart__empty-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-10) var(--space-5);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ── Footer — totals + buttons ── */
+.mini-cart__body .woocommerce-mini-cart__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--color-surface-alt);
+  border-top: 1px solid var(--color-border);
+}
+
+.mini-cart__body .woocommerce-mini-cart__total strong {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.mini-cart__body .woocommerce-mini-cart__total .amount {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Action buttons */
+.mini-cart__body .woocommerce-mini-cart__buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.mini-cart__body .woocommerce-mini-cart__buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  border-radius: var(--radius-base);
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+/* View cart button */
+.mini-cart__body .woocommerce-mini-cart__buttons .button.wc-forward {
+  color: var(--color-primary);
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+}
+
+.mini-cart__body .woocommerce-mini-cart__buttons .button.wc-forward:hover {
+  background-color: var(--color-primary-subtle);
+}
+
+/* Checkout button */
+.mini-cart__body .woocommerce-mini-cart__buttons .button.checkout {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.mini-cart__body .woocommerce-mini-cart__buttons .button.checkout:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+/* ── Hover bridge — prevents dropdown closing when moving mouse ── */
+.mini-cart-wrap::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: var(--space-3);
+}
+
+/* ── Responsive — disable hover on mobile, use click ── */
+@media ( max-width: 768px ) {
+  .mini-cart {
+    right: -var(--space-4);
+    width: calc( 100vw - var(--space-8) );
+    max-width: 360px;
+  }
+}
+
+/* ── Reduced motion ── */
+@media ( prefers-reduced-motion: reduce ) {
+  .mini-cart {
+    transition: opacity 0.1s ease, visibility 0.1s ease;
+    transform: none !important;
+  }
+}

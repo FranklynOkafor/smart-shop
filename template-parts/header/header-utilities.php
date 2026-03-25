@@ -31,21 +31,57 @@ defined( 'ABSPATH' ) || exit;
 			<?php smartshop_icon( 'user' ); ?>
 		</a>
 
-		<?php /* Cart */ ?>
-		<a
-			href="<?php echo esc_url( wc_get_cart_url() ); ?>"
-			class="header-utils__btn header-utils__btn--cart js-cart-trigger"
-			aria-label="<?php esc_attr_e( 'Shopping cart', 'smartshop' ); ?>"
-		>
-			<?php smartshop_icon( 'cart' ); ?>
-			<span
-				class="cart-count<?php echo smartshop_cart_count() === 0 ? ' cart-count--empty' : ''; ?>"
-				aria-live="polite"
-				aria-atomic="true"
+		<?php /* Cart + Mini Cart Dropdown */ ?>
+		<div class="mini-cart-wrap" data-mini-cart>
+
+			<a
+				href="<?php echo esc_url( wc_get_cart_url() ); ?>"
+				class="header-utils__btn header-utils__btn--cart js-cart-trigger"
+				aria-label="<?php esc_attr_e( 'Shopping cart', 'smartshop' ); ?>"
+				aria-haspopup="true"
+				aria-expanded="false"
 			>
-				<?php echo esc_html( smartshop_cart_count() ); ?>
-			</span>
-		</a>
+				<?php smartshop_icon( 'cart' ); ?>
+				<span
+					class="cart-count<?php echo smartshop_cart_count() === 0 ? ' cart-count--empty' : ''; ?>"
+					aria-live="polite"
+					aria-atomic="true"
+				>
+					<?php echo esc_html( smartshop_cart_count() ); ?>
+				</span>
+			</a>
+
+			<!-- Mini cart dropdown -->
+			<div
+				class="mini-cart"
+				role="dialog"
+				aria-label="<?php esc_attr_e( 'Cart summary', 'smartshop' ); ?>"
+				aria-hidden="true"
+				data-mini-cart-panel
+			>
+				<div class="mini-cart__inner">
+
+					<div class="mini-cart__header">
+						<span class="mini-cart__title"><?php esc_html_e( 'Your Cart', 'smartshop' ); ?></span>
+						<span class="mini-cart__count">
+							<?php
+							printf(
+								/* translators: %d: item count */
+								esc_html( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'smartshop' ) ),
+								WC()->cart->get_cart_contents_count()
+							);
+							?>
+						</span>
+					</div>
+
+					<div class="mini-cart__body woocommerce">
+						<?php woocommerce_mini_cart(); ?>
+					</div>
+
+				</div>
+			</div><!-- .mini-cart -->
+
+		</div><!-- .mini-cart-wrap -->
 
 	<?php endif; ?>
 

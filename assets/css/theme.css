@@ -8,20 +8,27 @@
  * @package SmartShop
  */
 
+
+ /* Components */
+
 @import "components/hero-banner.css";
-@import 'base/buttons.css';
 @import 'components/trust-badges.css';
 @import 'components/categories.css';
 @import 'components/product-card.css';
 @import 'components/promo-split.css';
 @import 'components/testimonials.css';
 @import 'components/newsletter.css';
-@import 'archive-product.css';
 @import 'components/sidebar.css';
 @import 'components/single-product.css';
 @import 'components/cart.css';
 @import 'components/checkout.css';
 @import 'components/thankyou.css';
+@import 'components/minicart.css';
+
+/* Addons */
+@import 'archive-product.css';
+@import 'base/buttons.css';
+
 
 
 

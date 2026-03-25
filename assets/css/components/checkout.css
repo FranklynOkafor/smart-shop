@@ -66,7 +66,7 @@
   grid-column: 2;
   grid-row: 1;
   position: sticky;
-  top: calc( var(--header-height) + var(--space-6) );
+  top: calc(var(--header-height) + var(--space-6));
 }
 
 .woocommerce-cart .woocommerce .cross-sells {
@@ -158,7 +158,9 @@
 
 /* Full width overrides for specific fields */
 .woocommerce-checkout .woocommerce-billing-fields__field-wrapper .form-row-wide,
-.woocommerce-checkout .woocommerce-shipping-fields__field-wrapper .form-row-wide {
+.woocommerce-checkout
+  .woocommerce-shipping-fields__field-wrapper
+  .form-row-wide {
   grid-column: 1 / -1;
 }
 
@@ -195,7 +197,8 @@
   border-radius: var(--radius-base);
   padding: var(--space-3) var(--space-4);
   height: 44px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
   appearance: none;
   -webkit-appearance: none;
 }
@@ -297,7 +300,12 @@
   font-weight: 600;
 }
 
-.woocommerce-checkout #order_review table.shop_table tbody td.product-name .product-quantity {
+.woocommerce-checkout
+  #order_review
+  table.shop_table
+  tbody
+  td.product-name
+  .product-quantity {
   color: var(--color-text-muted);
   font-weight: 400;
   font-size: var(--text-xs);
@@ -434,20 +442,18 @@
   border: none !important;
   border-radius: var(--radius-base);
   cursor: pointer;
-  transition:
-    background-color var(--transition-fast),
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
+  transition: background-color var(--transition-fast),
+    transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .woocommerce-checkout #payment .place-order #place_order:hover {
   background-color: var(--color-primary-dark) !important;
-  transform: translateY( -1px );
+  transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
 
 .woocommerce-checkout #payment .place-order #place_order:active {
-  transform: translateY( 0 );
+  transform: translateY(0);
   box-shadow: none;
 }
 
@@ -478,25 +484,33 @@
 }
 
 /* Terms and conditions */
-.woocommerce-checkout #payment .place-order .woocommerce-terms-and-conditions-wrapper {
+.woocommerce-checkout
+  #payment
+  .place-order
+  .woocommerce-terms-and-conditions-wrapper {
   margin-bottom: var(--space-4);
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   line-height: 1.6;
 }
 
-.woocommerce-checkout #payment .place-order .woocommerce-terms-and-conditions-wrapper a {
+.woocommerce-checkout
+  #payment
+  .place-order
+  .woocommerce-terms-and-conditions-wrapper
+  a {
   color: var(--color-primary);
   text-decoration: none;
 }
 
-.woocommerce-checkout #payment .place-order .woocommerce-terms-and-conditions-wrapper input[type="checkbox"] {
+.woocommerce-checkout
+  #payment
+  .place-order
+  .woocommerce-terms-and-conditions-wrapper
+  input[type="checkbox"] {
   accent-color: var(--color-primary);
   margin-right: var(--space-2);
 }
-
-
-
 
 /* =====================
   TABLE FIX
@@ -510,39 +524,45 @@
   width: auto;
 }
 
-.woocommerce-cart table.shop_table td.product-remove { width: 40px; }
-.woocommerce-cart table.shop_table td.product-thumbnail { width: 88px; }
-.woocommerce-cart table.shop_table td.product-price { width: 100px; }
-.woocommerce-cart table.shop_table td.product-quantity { width: 120px; }
-.woocommerce-cart table.shop_table td.product-subtotal { width: 100px; }
-
+.woocommerce-cart table.shop_table td.product-remove {
+  width: 40px;
+}
+.woocommerce-cart table.shop_table td.product-thumbnail {
+  width: 88px;
+}
+.woocommerce-cart table.shop_table td.product-price {
+  width: 100px;
+}
+.woocommerce-cart table.shop_table td.product-quantity {
+  width: 120px;
+}
+.woocommerce-cart table.shop_table td.product-subtotal {
+  width: 100px;
+}
 
 /* =====================
   PERSONAL ADD-ONS
 ======================*/
-.form-row{
+.form-row {
   width: 100% !important;
 }
 
-.woocommerce-checkout-payment{
+.woocommerce-checkout-payment {
   padding: 0 30px;
 }
-
-
-
 
 /* ═══════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════ */
 
-@media ( max-width: 1024px ) {
+@media (max-width: 1024px) {
   .woocommerce-checkout .woocommerce {
     grid-template-columns: 1fr 360px;
     gap: var(--space-6);
   }
 }
 
-@media ( max-width: 768px ) {
+@media (max-width: 768px) {
   .woocommerce-checkout .woocommerce {
     grid-template-columns: 1fr;
   }
@@ -563,7 +583,7 @@
 }
 
 /* ── Reduced motion ── */
-@media ( prefers-reduced-motion: reduce ) {
+@media (prefers-reduced-motion: reduce) {
   .woocommerce-checkout #payment .place-order #place_order,
   .woocommerce-checkout .form-row input.input-text,
   .woocommerce-checkout .form-row select {
