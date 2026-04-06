@@ -737,15 +737,18 @@
 /* ── Fix address grid — correct DOM context ── */
 .entry-content .u-columns.col2-set {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
+  grid-template-columns: 1fr !important;
   gap: var(--space-6) !important;
 }
 
-.entry-content .u-columns.col2-set .col-1,
-.entry-content .u-columns.col2-set .col-2 {
+.entry-content .u-columns.col2-set .u-column1,
+.entry-content .u-columns.col2-set .u-column2 {
   float: none !important;
   width: 100% !important;
+  min-width: 0 !important;
   margin: 0 !important;
+  
+  overflow: hidden;
 }
 
 /* Fix address title — WC uses h2 not h3 */
@@ -756,4 +759,16 @@
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
+  
+}
+.woocommerce-account .woocommerce-Address-title {
+  overflow: hidden;
+}
+
+.woocommerce-account .woocommerce-Address-title .edit {
+  font-size: var(--text-xs) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
 }

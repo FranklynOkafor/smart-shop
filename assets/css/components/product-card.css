@@ -275,6 +275,23 @@
   .smartshop-product-grid {
     gap: var(--space-4);
   }
+  .product-card{
+    width: 100%;
+  }
+
+  .product-card__media{
+    height: 150px;
+  }
+
+  .product-card__title-link{
+    display: block;
+    height: 50px;
+  }
+
+
+  .product-card__atc.btn.btn--primary.btn--sm.ajax_add_to_cart {
+    font-size: 17px !important;
+  }
 }
 
 /* ── Reduced motion ── */
