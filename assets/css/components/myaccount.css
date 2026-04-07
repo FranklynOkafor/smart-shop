@@ -120,6 +120,8 @@
   border-radius: var(--radius-md);
   padding: var(--space-8);
   min-width: 0;
+  width: fit-content !important;
+
 }
 
 /* Section headings inside content */
@@ -193,7 +195,7 @@
 }
 
 .woocommerce-account .woocommerce-orders-table thead th {
-  font-size: var(--text-xs);
+  font-size: var(--text-base);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -662,11 +664,19 @@
 
 @media ( max-width: 768px ) {
   .woocommerce-account .woocommerce {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
   }
 
   .woocommerce-account .woocommerce-MyAccount-navigation {
     position: static;
+    width: 100% !important;
+    margin-bottom: var(--space-4);
+  }
+
+  .woocommerce-account .woocommerce-MyAccount-content {
+    width: 100% !important;
   }
 
   /* Horizontal scrolling nav on mobile */
